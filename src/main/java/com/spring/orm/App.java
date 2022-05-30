@@ -7,7 +7,15 @@ import com.spring.orm.dao.StudentDao;
 import com.spring.orm.entities.Student;
 
 /**
- * Hello world!
+ * configuration done now
+ * we are working with CRUD
+ * C-> Create
+ * R->Read
+ * U->Update
+ * D->Delete
+ * and
+ * finally we create 
+ * one Console based Application
  *
  */
 public class App 
