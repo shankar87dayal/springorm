@@ -115,7 +115,7 @@ public class App
  				break;
              case 4:
  				// delete students
-            	 System.out.println("Enter user id : ");
+            	 System.out.println("Enter student id : ");
 					int id = Integer.parseInt(br.readLine());
 					studentDao.deleteStudent(id);
 					System.out.println("Student deleted...");
