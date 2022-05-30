@@ -2,6 +2,7 @@ package com.spring.orm;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -61,22 +62,64 @@ public class App
 //        	 {
 //        		 
 //        	 }
-        	 //using swithch case
+        	 //using switch case
         	 switch (input) {
 			case 1:
 				//add a new student
+				// taking inputs from users
+				System.out.println("Enter studentId : ");
+				int sId = Integer.parseInt(br.readLine());
+
+				System.out.println("Enter studentName  :");
+				String sName = br.readLine();
+
+				System.out.println("Enter studentCity: ");
+				String sCity = br.readLine();
+
+				// creating student object and setting values
+				Student s = new Student();
+				s.setStudentId(sId);
+				s.setStudentName(sName);
+				s.setStudentCity(sCity);
+
+				// saving student object to database by calling insert of student dao
+				int r = studentDao.insert(s);
+				System.out.println(r + " student added");
+				System.out.println("***************************************");
+				System.out.println();
 				break;
 
              case 2:
 				//display all students
-            	 
-				break;
+            	 System.out.println("**************************************");
+					List<Student> allStudents = studentDao.getAllStudents();
+					for (Student st : allStudents) {
+						System.out.println("studentId : " + st.getStudentId());
+						System.out.println("studentName : " + st.getStudentName());
+						System.out.println("studentCity : " + st.getStudentCity());
+						System.out.println("___________________________________");
+					}
+
+					System.out.println("**************************************");
+					break;
+				
              case 3:
  				//detail of single student
+            	 System.out.println("Enter  studentId : ");
+					int studentId = Integer.parseInt(br.readLine());
+					Student student = studentDao.getStudent(studentId);
+					System.out.println("studentId : " + student.getStudentId());
+					System.out.println("studentName : " + student.getStudentName());
+					System.out.println("studentCity : " + student.getStudentCity());
+					System.out.println("___________________________________");
  				break;
              case 4:
  				// delete students
- 				break;
+            	 System.out.println("Enter user id : ");
+					int id = Integer.parseInt(br.readLine());
+					studentDao.deleteStudent(id);
+					System.out.println("Student deleted...");
+					break;
              case 5:
  				//update student
  				break;
